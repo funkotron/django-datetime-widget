@@ -113,7 +113,7 @@ BOOTSTRAP_INPUT_TEMPLATE = {
        <div id="%(id)s" class="input-group date">
            %(rendered_widget)s
            %(clear_button)s
-           <span class="input-group-addon"><span class="glyphicon %(glyphicon)s"></span></span>
+           <span class="input-group-addon"><span class="icon %(icon)s"></span></span>
        </div>
        <script type="text/javascript">
            $("#%(id)s").datetimepicker({%(options)s}).find('input').addClass("form-control");
@@ -122,7 +122,7 @@ BOOTSTRAP_INPUT_TEMPLATE = {
        }
 
 CLEAR_BTN_TEMPLATE = {2: """<span class="add-on"><i class="icon-remove"></i></span>""",
-                      3: """<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>"""}
+                      3: """<span class="input-group-addon"><span class="icon icon-remove"></span></span>"""}
 
 
 quoted_options = set([
@@ -169,7 +169,7 @@ def quote(key, value):
 class PickerWidgetMixin(object):
 
     format_name = None
-    glyphicon = None
+    icon = None
 
     def __init__(self, attrs=None, options=None, usel10n=None, bootstrap_version=None):
 
@@ -244,7 +244,7 @@ class PickerWidgetMixin(object):
                     id=id,
                     rendered_widget=rendered_widget,
                     clear_button=CLEAR_BTN_TEMPLATE[self.bootstrap_version] if clearBtn else "",
-                    glyphicon=self.glyphicon,
+                    icon=self.icon,
                     options=js_options
                     )
         )
@@ -274,7 +274,7 @@ class DateTimeWidget(PickerWidgetMixin, DateTimeInput):
     """
 
     format_name = 'DATETIME_INPUT_FORMATS'
-    glyphicon = 'glyphicon-th'
+    icon = 'icon-th'
 
     def __init__(self, attrs=None, options=None, usel10n=None, bootstrap_version=None):
 
@@ -294,7 +294,7 @@ class DateWidget(PickerWidgetMixin, DateInput):
     """
 
     format_name = 'DATE_INPUT_FORMATS'
-    glyphicon = 'glyphicon-calendar'
+    icon = 'icon-calendar'
 
     def __init__(self, attrs=None, options=None, usel10n=None, bootstrap_version=None):
 
@@ -316,7 +316,7 @@ class TimeWidget(PickerWidgetMixin, TimeInput):
     """
 
     format_name = 'TIME_INPUT_FORMATS'
-    glyphicon = 'glyphicon-time'
+    icon = 'icon-time'
 
     def __init__(self, attrs=None, options=None, usel10n=None, bootstrap_version=None):
 
